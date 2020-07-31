@@ -26,7 +26,7 @@ output_subject_dir='.'
 
 #parallel
 start=$SECONDS
-eval "ls -d duplicate* | parallel --jobs 4 recon-all -i {}/001.dcm -s {}out -sd ${output_subject_dir} $recon_phase" 
+eval "ls -d duplicate* | parallel --jobs $n_proc recon-all -i {}/001.dcm -s {}out -sd ${output_subject_dir} $recon_phase" 
 wait
 	duration=$(( SECONDS - start ))
 echo "Time for $n_proc subjects(secs) = $((duration))"
